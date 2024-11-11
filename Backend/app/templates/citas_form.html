@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Crear/Editar Cita</h1>
+<form method="POST" class="appointment-form">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    <label for="paciente_id">{{ form.paciente_id.label }}</label>
+    {{ form.paciente_id(class="form-control") }}
+  </div>
+  <div class="form-group">
+    <label for="medico_id">{{ form.medico_id.label }}</label>
+    {{ form.medico_id(class="form-control") }}
+  </div>
+  <div class="form-group">
+    <label for="consultorio_id">{{ form.consultorio_id.label }}</label>
+    {{ form.consultorio_id(class="form-control") }}
+  </div>
+  <div class="form-group">
+    <label for="fecha">{{ form.fecha.label }}</label>
+    {{ form.fecha(class="form-control") }}
+  </div>
+  <div class="form-group">
+    <label for="hora">{{ form.hora.label }}</label>
+    {{ form.hora(class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ form.submit(class="btn btn-primary") }}
+  </div>
+</form>
+{% endblock %}
+<style>
+  /* Reset CSS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Header */
+  header {
+    background: rgba(0, 150, 136, 0.9);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 3em;
+    margin: 0;
+  }
+
+  /* Navigation Bar */
+  nav {
+    display: flex;
+    justify-content: center;
+    background: #00796b;
+    padding: 15px 0;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+
+  nav a:hover {
+    background: #004d40;
+  }
+
+  /* Main Content */
+  main {
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  main h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00796b;
+  }
+
+  /* Form Styles */
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: #00796b;
+    box-shadow: 0 0 5px rgba(0, 121, 107, 0.5);
+    outline: none;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background: #00796b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #004d40;
+  }
+
+  /* Footer */
+  footer {
+    background: rgba(0, 150, 136, 0.9);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 0;
+  }
+</style>

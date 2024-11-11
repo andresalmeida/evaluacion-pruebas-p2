@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Lista de Citas</h1>
+<table class="appointment-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Paciente ID</th>
+      <th>Médico ID</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Consultorio ID</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cita in citas %}
+    <tr>
+      <td>{{ cita.id }}</td>
+      <td>{{ cita.paciente_id }}</td>
+      <td>{{ cita.medico_id }}</td>
+      <td>{{ cita.fecha }}</td>
+      <td>{{ cita.hora }}</td>
+      <td>{{ cita.consultorio_id }}</td>
+      <td>
+        <a href="{{ url_for('main.editar_cita', id=cita.id) }}" class="btn btn-edit">Editar</a>
+        <form action="{{ url_for('main.eliminar_cita', id=cita.id) }}" method="post" style="display: inline-block;">
+          <button type="submit" class="btn btn-delete"
+            onclick="return confirm('¿Estás seguro de que quieres eliminar esta cita?')">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+<style>
+  /* Reset CSS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Header */
+  header {
+    background: rgba(0, 150, 136, 0.9);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 3em;
+    margin: 0;
+  }
+
+  /* Navigation Bar */
+  nav {
+    display: flex;
+    justify-content: center;
+    background: #00796b;
+    padding: 15px 0;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+
+  nav a:hover {
+    background: #004d40;
+  }
+
+  /* Main Content */
+  main {
+    max-width: 1000px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  main h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00796b;
+  }
+
+  /* Appointment Table */
+  .appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .appointment-table th,
+  .appointment-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .appointment-table th {
+    background: #00796b;
+    color: #fff;
+  }
+
+  .appointment-table tr:nth-child(even) {
+    background: #f2f2f2;
+  }
+
+  .appointment-table tr:hover {
+    background: #ddd;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background: #00796b;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .btn-edit {
+    background: #00796b;
+    margin-right: 5px;
+  }
+
+  .btn-edit:hover {
+    background: #004d40;
+  }
+
+  .btn-delete {
+    background: #d9534f;
+  }
+
+  .btn-delete:hover {
+    background: #c9302c;
+  }
+
+  /* Footer */
+  footer {
+    background: rgba(0, 150, 136, 0.9);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  footer p {
+    margin: 0;
+  }
+</style>
